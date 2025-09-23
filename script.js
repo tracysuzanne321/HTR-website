@@ -288,17 +288,22 @@ if (dateInput) {
     }
 }
 
-// Add loading state to buttons
-document.querySelectorAll('.btn').forEach(button => {
-    if (button.type === 'submit') {
-        button.addEventListener('click', function() {
-            if (button.form && button.form.checkValidity()) {
-                button.textContent = 'Processing...';
-                button.disabled = true;
-                setTimeout(() => {
-                    button.textContent = 'Submit Booking Request';
-                    button.disabled = false;
-                }, 2000);
+// Form submission with loading state
+document.addEventListener('DOMContentLoaded', function() {
+    const bookingForm = document.querySelector('.booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                // Store original text
+                const originalText = submitBtn.textContent;
+                
+                // Show loading state
+                submitBtn.textContent = 'Processing...';
+                submitBtn.disabled = true;
+                
+                // Allow form to submit naturally to FormSubmit
+                // FormSubmit will redirect to thank-you page
             }
         });
     }
