@@ -58,15 +58,6 @@ if (bookingForm) {
         submitBtn.disabled = true;
         
         // Let FormSubmit handle the submission naturally
-        // We'll show success message after a delay
-        setTimeout(() => {
-            showSuccessMessage();
-            this.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }, 2000);
-        
-        // Don't prevent default - let the form submit normally
         // The form will redirect to FormSubmit's success page
     });
 }
