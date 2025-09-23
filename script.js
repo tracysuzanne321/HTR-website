@@ -53,9 +53,11 @@ if (bookingForm) {
     bookingForm.addEventListener('submit', function(e) {
         // Show loading state
         const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+        if (submitBtn) {
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+        }
         
         // Let FormSubmit handle the submission naturally
         // The form will redirect to FormSubmit's success page
@@ -155,18 +157,22 @@ const observer = new IntersectionObserver(function(entries) {
 
 // Observe service cards
 document.querySelectorAll('.service-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(card);
+    if (card) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+    }
 });
 
 // Observe about cards
 document.querySelectorAll('.about-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(card);
+    if (card) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+    }
 });
 
 // Set minimum date for booking form to today and disable weekends
