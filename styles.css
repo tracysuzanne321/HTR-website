@@ -60,6 +60,11 @@ body {
     transform: scale(1.05);
 }
 
+.nav-brand a {
+    text-decoration: none;
+    display: inline-block;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -1371,6 +1376,101 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     line-height: 1.4;
 }
 
+/* Legal Pages Styles */
+.legal-hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 120px 0 80px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.legal-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.last-updated {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.legal-content-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.legal-text {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.legal-text h2 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.legal-text h2:first-child {
+    margin-top: 0;
+}
+
+.legal-text h3 {
+    color: var(--dark-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.legal-text p {
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+}
+
+.legal-text ul,
+.legal-text ol {
+    margin: 1rem 0 1.5rem 2rem;
+    color: var(--text-color);
+}
+
+.legal-text li {
+    margin-bottom: 0.5rem;
+}
+
+.legal-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.legal-text a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    background: var(--light-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    margin: 1.5rem 0;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.contact-info strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 /* Thank You Page Styles */
 .thank-you-hero {
     position: relative;
@@ -1822,5 +1922,23 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     .legal-links {
         justify-content: center;
         flex-wrap: wrap;
+    }
+    
+    /* Legal pages mobile styles */
+    .legal-content h1 {
+        font-size: 2rem;
+    }
+    
+    .legal-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .legal-text h3 {
+        font-size: 1.125rem;
+    }
+    
+    .legal-text ul,
+    .legal-text ol {
+        margin-left: 1rem;
     }
 }
