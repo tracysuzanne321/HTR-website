@@ -289,20 +289,20 @@ if (dateInput) {
 }
 
 // Add loading state to buttons
-document.querySelectorAll('.btn').forEach(button => {
-    if (button.type === 'submit') {
-        button.addEventListener('click', function() {
-            if (button.form && button.form.checkValidity()) {
-                button.textContent = 'Processing...';
-                button.disabled = true;
-                setTimeout(() => {
-                    button.textContent = 'Submit Booking Request';
-                    button.disabled = false;
-                }, 2000);
-            }
-        });
-    }
-});
+// document.querySelectorAll('.btn').forEach(button => {
+//     if (button.type === 'submit') {
+//         button.addEventListener('click', function() {
+//             if (button.form && button.form.checkValidity()) {
+//                 button.textContent = 'Processing...';
+//                 button.disabled = true;
+//                 setTimeout(() => {
+//                     button.textContent = 'Submit Booking Request';
+//                     button.disabled = false;
+//                 }, 2000);
+//             }
+//         });
+//     }
+// });
 
 // Phone number formatting
 const phoneInput = document.getElementById('phone');
