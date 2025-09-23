@@ -288,26 +288,23 @@ if (dateInput) {
     }
 }
 
-// Form submission with loading state
-document.addEventListener('DOMContentLoaded', function() {
-    const bookingForm = document.querySelector('.booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
-            const submitBtn = this.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                // Store original text
-                const originalText = submitBtn.textContent;
-                
-                // Show loading state
-                submitBtn.textContent = 'Processing...';
-                submitBtn.disabled = true;
-                
-                // Allow form to submit naturally to FormSubmit
-                // FormSubmit will redirect to thank-you page
-            }
-        });
-    }
-});
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.booking-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+
+    form.addEventListener('submit', function (e) {
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      // Optional fallback: reset button after timeout in case formsubmit.co fails
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }, 10000); // 10 seconds timeout
+    });
+  });
 
 // Phone number formatting
 const phoneInput = document.getElementById('phone');
