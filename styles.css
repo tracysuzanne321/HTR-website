@@ -445,7 +445,7 @@ body {
 .price-cell.special {
     grid-column: span 2;
     color: var(--accent-color);
-    font-style: italic;
+   
 }
 
 .additional-services {
@@ -560,6 +560,23 @@ body {
     border-radius: 12px;
     text-align: center;
     margin-top: 2rem;
+}
+
+.mot-price .free-retest {
+    color: #10b981;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.mot-price .free-retest::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: bold;
 }
 
 .price-tag {
@@ -1315,6 +1332,179 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     font-size: 1.25rem;
     color: var(--dark-color);
     margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Status Indicator */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6b7280;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.open {
+    background: #10b981;
+}
+
+.status-dot.closed {
+    background: #ef4444;
+}
+
+.status-text {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+
+.bank-holiday-note {
+    margin-top: 0.75rem !important;
+    font-size: 0.8rem !important;
+    color: #6b7280 !important;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.bank-holiday-note i {
+    color: #3b82f6;
+    font-size: 0.75rem;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Custom Date Picker */
+.date-picker-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: none;
+    padding: 1rem;
+    margin-top: 0.25rem;
+}
+
+.date-picker-container.show {
+    display: block;
+}
+
+.date-picker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.date-picker-nav {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.date-picker-nav:hover {
+    background: #f3f4f6;
+}
+
+.date-picker-month-year {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.date-picker-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.date-picker-weekday {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    padding: 0.5rem 0;
+}
+
+.date-picker-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+}
+
+.date-picker-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    color: var(--text-color);
+}
+
+.date-picker-day:hover:not(.disabled) {
+    background: #f3f4f6;
+}
+
+.date-picker-day.selected {
+    background: var(--primary-color);
+    color: white;
+}
+
+.date-picker-day.disabled {
+    color: #d1d5db;
+    cursor: not-allowed;
+    background: #f9fafb;
+}
+
+.date-picker-day.other-month {
+    color: #d1d5db;
+}
+
+.date-picker-day.today {
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+}
+
+.form-group {
+    position: relative;
 }
 
 .map-container {

@@ -247,6 +247,238 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// Opening Hours Status Indicator
+document.addEventListener('DOMContentLoaded', function () {
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+    
+    if (statusDot && statusText) {
+        function updateStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const currentTime = hour * 60 + minute;
+            
+            // UK Bank Holidays 2025
+            const bankHolidays2025 = [
+                '2025-01-01', // New Year's Day
+                '2025-04-18', // Good Friday
+                '2025-04-21', // Easter Monday
+                '2025-05-05', // Early May Bank Holiday
+                '2025-05-26', // Spring Bank Holiday
+                '2025-08-25', // Summer Bank Holiday
+                '2025-12-25', // Christmas Day
+                '2025-12-26'  // Boxing Day
+            ];
+            
+            // Check if today is a bank holiday
+            const todayString = now.toISOString().split('T')[0];
+            const isBankHoliday = bankHolidays2025.includes(todayString);
+            
+            // Opening hours: Mon-Fri 8:30 AM - 5:00 PM (8:30 = 510 minutes, 17:00 = 1020 minutes)
+            const openTime = 8 * 60 + 30; // 8:30 AM
+            const closeTime = 17 * 60; // 5:00 PM
+            
+            let isOpen = false;
+            let statusMessage = '';
+            
+            // Check if it's a bank holiday first
+            if (isBankHoliday) {
+                statusMessage = 'We are closed (bank holiday)';
+            }
+            // Check if it's a weekday (Monday = 1 to Friday = 5)
+            else if (day >= 1 && day <= 5) {
+                if (currentTime >= openTime && currentTime < closeTime) {
+                    isOpen = true;
+                    statusMessage = 'We are open';
+                } else if (currentTime < openTime) {
+                    statusMessage = 'We open at 8:30 AM';
+                } else {
+                    statusMessage = 'We are closed';
+                }
+            } else {
+                statusMessage = 'We are closed (weekend)';
+            }
+            
+            // Update the status indicator
+            statusDot.className = 'status-dot ' + (isOpen ? 'open' : 'closed');
+            statusText.textContent = statusMessage;
+        }
+        
+        // Update status immediately and then every minute
+        updateStatus();
+        setInterval(updateStatus, 60000); // Update every minute
+    }
+});
+
+// Custom Date Picker
+document.addEventListener('DOMContentLoaded', function () {
+    const dateInput = document.getElementById('date-picker');
+    const datePickerContainer = document.getElementById('date-picker-container');
+    
+    if (dateInput && datePickerContainer) {
+        // UK Bank Holidays 2025
+        const bankHolidays2025 = [
+            '2025-01-01', // New Year's Day
+            '2025-04-18', // Good Friday
+            '2025-04-21', // Easter Monday
+            '2025-05-05', // Early May Bank Holiday
+            '2025-05-26', // Spring Bank Holiday
+            '2025-08-25', // Summer Bank Holiday
+            '2025-12-25', // Christmas Day
+            '2025-12-26'  // Boxing Day
+        ];
+        
+        let currentDate = new Date();
+        let selectedDate = null;
+        
+        function isWeekend(date) {
+            const day = date.getDay();
+            return day === 0 || day === 6; // Sunday = 0, Saturday = 6
+        }
+        
+        function isBankHoliday(date) {
+            const dateString = date.toISOString().split('T')[0];
+            return bankHolidays2025.includes(dateString);
+        }
+        
+        function isValidBookingDate(date) {
+            const today = new Date();
+            const twoDaysFromNow = new Date(today);
+            twoDaysFromNow.setDate(today.getDate() + 2);
+            
+            // Must be at least 2 days in the future
+            if (date < twoDaysFromNow) {
+                return false;
+            }
+            
+            // Cannot be weekend
+            if (isWeekend(date)) {
+                return false;
+            }
+            
+            // Cannot be bank holiday
+            if (isBankHoliday(date)) {
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function formatDate(date) {
+            return date.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        }
+        
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            const monthNames = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            
+            datePickerContainer.innerHTML = `
+                <div class="date-picker-header">
+                    <button class="date-picker-nav" id="prev-month">‹</button>
+                    <div class="date-picker-month-year">${monthNames[month]} ${year}</div>
+                    <button class="date-picker-nav" id="next-month">›</button>
+                </div>
+                <div class="date-picker-weekdays">
+                    ${weekdays.map(day => `<div class="date-picker-weekday">${day}</div>`).join('')}
+                </div>
+                <div class="date-picker-days" id="calendar-days"></div>
+            `;
+            
+            const calendarDays = document.getElementById('calendar-days');
+            const today = new Date();
+            
+            for (let i = 0; i < 42; i++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                
+                const dayButton = document.createElement('button');
+                dayButton.className = 'date-picker-day';
+                dayButton.textContent = date.getDate();
+                
+                // Check if this date is valid for booking
+                const isValid = isValidBookingDate(date);
+                const isCurrentMonth = date.getMonth() === month;
+                const isToday = date.toDateString() === today.toDateString();
+                const isSelected = selectedDate && date.toDateString() === selectedDate.toDateString();
+                
+                if (!isValid) {
+                    dayButton.classList.add('disabled');
+                }
+                
+                if (!isCurrentMonth) {
+                    dayButton.classList.add('other-month');
+                }
+                
+                if (isToday) {
+                    dayButton.classList.add('today');
+                }
+                
+                if (isSelected) {
+                    dayButton.classList.add('selected');
+                }
+                
+                if (isValid) {
+                    dayButton.addEventListener('click', (e) => {
+                        e.stopPropagation(); // Prevent event bubbling
+                        selectedDate = date;
+                        dateInput.value = formatDate(date);
+                        datePickerContainer.classList.remove('show');
+                        renderCalendar(); // Re-render to show selection
+                    });
+                }
+                
+                calendarDays.appendChild(dayButton);
+            }
+            
+            // Add navigation event listeners
+            document.getElementById('prev-month').addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+            
+            document.getElementById('next-month').addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+        }
+        
+        // Show/hide date picker
+        dateInput.addEventListener('click', () => {
+            datePickerContainer.classList.toggle('show');
+        });
+        
+        // Close date picker when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dateInput.contains(e.target) && !datePickerContainer.contains(e.target)) {
+                datePickerContainer.classList.remove('show');
+            }
+        });
+        
+        // Initialize calendar
+        renderCalendar();
+    }
+});
+
 // Phone number formatting
 const phoneInput = document.getElementById('phone');
 if (phoneInput) {
