@@ -216,8 +216,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const originalBtnText = submitBtn ? submitBtn.textContent : 'Send';
 
         form.addEventListener('submit', function (e) {
+            console.log('Form submit event triggered'); // Debug log
+            
             // Only proceed if form is valid
             if (form.checkValidity()) {
+                console.log('Form is valid, proceeding with submission'); // Debug log
+                
                 // Show loading state
                 if (submitBtn) {
                     submitBtn.disabled = true;
@@ -231,8 +235,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         submitBtn.textContent = originalBtnText;
                     }
                 }, 10000); // 10 seconds timeout
+                
+                // Let the form submit naturally to FormSubmit
+                // Don't prevent default
+            } else {
+                console.log('Form validation failed'); // Debug log
             }
         });
+    } else {
+        console.log('Form not found'); // Debug log
     }
 });
 
