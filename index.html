@@ -407,41 +407,78 @@
             </div>
         </div>
     </section>
-
-    <form action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST">
-        <input type="text" name="name" required placeholder="Your Name">
-        <input type="email" name="email" required placeholder="Your Email">
-        <input type="tel" name="phone" required placeholder="Your Phone Number">
-        <input type="text" name="registration" required placeholder="Your Vehicle Registration">
-        <select name="service" required placeholder="Your Service">
-            <option value="">Select a service</option>
-            <option value="mot">MOT Test</option>
-            <option value="mot & interim">MOT & Interim Service</option>
-            <option value="mot & full">MOT & Full Service</option>
-            <option value="interim">Interim Service</option>
-            <option value="full">Full Service</option>
-            <option value="clutch">Clutch Service</option>
-            <option value="suspension">Suspension Service</option>
-            <option value="brakes">Brake Service</option>
-            <option value="tyres">Tyre Service</option>
-            <option value="brakes">Brake Service</option>
-            <option value="diagnostics">Engine Diagnostics</option>
-            <option value="battery">Battery Replacement</option>
-            <option value="aircon">Air Con Service</option>
-            <option value="general">General Repair</option>
-            <option value="other">Other (specify in message)</option>
-        </select>
-        <input type="date" name="date" required placeholder="Your Preferred Date">
-        <textarea name="message" required placeholder="Your Message"></textarea>
-        
-        
+<section class="booking">
+    <div class="booking-overlay"></div>
+    <div class="container">
+        <h2 class="section-title">Book Your Service</h2>
+    <form action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST" class="booking-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" name="phone" required placeholder="Your Phone Number">
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" required placeholder="Your Email">
+        </div>
+      
+        <div class="form-group">
+            <label for="registration">Vehicle Registration</label>
+            <input type="text" name="registration" required placeholder="Your Vehicle Registration">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="service">Service Required</label>
+            <select name="service" required placeholder="Your Service">
+                <option value="">Select a service</option>
+                <option value="mot">MOT Test</option>
+                <option value="mot & interim">MOT & Interim Service</option>
+                <option value="mot & full">MOT & Full Service</option>
+                <option value="interim">Interim Service</option>
+                <option value="full">Full Service</option>
+                <option value="clutch">Clutch Service</option>
+                <option value="suspension">Suspension Service</option>
+                <option value="brakes">Brake Service</option>
+                <option value="tyres">Tyre Service</option>
+                <option value="brakes">Brake Service</option>
+                <option value="diagnostics">Engine Diagnostics</option>
+                <option value="battery">Battery Replacement</option>
+                <option value="aircon">Air Con Service</option>
+                <option value="general">General Repair</option>
+                <option value="other">Other (specify in message)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" name="date" required placeholder="Your Preferred Date">
+        </div>
+    </div>
+     <!-- MOT Booking Notice -->
+     <div class="booking-notice">
+        <i class="fas fa-info-circle"></i>
+        <p><strong>Please note:</strong> We can offer timed MOT booking slots. However, if your MOT is booked with a service or repair, we will need your vehicle for the full day.</p>
+    </div>
+    <div class="form-group">
+        <label for="message">Additional Information</label>
+        <textarea name="message" required placeholder="Please describe any issues or additional services required"></textarea>
+    </div>
         <!-- Customisation -->
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://hadleytestandrepair.netlify.app/thank-you.html">
         <input type="text" name="_honey" style="display:none">
         
-        <button type="submit">Send</button>
+        <button type="submit" class="btn btn-primary">Send</button>
+         
       </form>
+    </div>
+</section>
        
       
 
@@ -600,7 +637,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 HTR Autocentre. All rights reserved.</p>
+                <p>&copy; 2025 HTR Autocentre. All rights reserved.</p>
             </div>
         </div>
     </footer>
