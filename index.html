@@ -408,20 +408,75 @@
         </div>
     </section>
 
-    <div class="container">
-        <h1>FormSubmit Demo</h1>
-        <form action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST">
-            <input type="text" name="name" required placeholder="Your Name">
-            <input type="email" name="email" required placeholder="Your Email">
-            <textarea name="message" required placeholder="Your Message"></textarea>
+    <section class="booking">
+        <div class="booking-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Book Your Service</h2>
+        <form action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST" class="booking-form">
+            <input type="hidden" name="_subject" value="New Booking Request - HTR Autocentre">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registration">Vehicle Registration</label>
+                    <input type="text" id="registration" name="registration" placeholder="e.g., AB12 CDE" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="service">Service Required</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="mot">MOT Test</option>
+                        <option value="mot & interim">MOT & Interim Service</option>
+                        <option value="mot & full">MOT & Full Service</option>
+                        <option value="interim">Interim Service</option>
+                        <option value="full">Full Service</option>
+                        <option value="clutch">Clutch Service</option>
+                        <option value="suspension">Suspension Service</option>
+                        <option value="brakes">Brake Service</option>
+                        <option value="tyres">Tyre Service</option>
+                        <option value="brakes">Brake Service</option>
+                        <option value="diagnostics">Engine Diagnostics</option>
+                        <option value="battery">Battery Replacement</option>
+                        <option value="aircon">Air Con Service</option>
+                        <option value="general">General Repair</option>
+                        <option value="other">Other (specify in message)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message">Additional Information</label>
+                <textarea id="message" name="message" rows="4" placeholder="Please describe any issues or additional services required"></textarea>
+            </div>
           
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
           
-            <button type="submit">Send</button>
+            <button type="submit" class="btn btn-primary">Send</button>
           </form>
-          
-      </div>
+        </div>
+      </section>
+      
 
     <!-- Booking Section -->
     <!-- <section id="booking" class="booking">
