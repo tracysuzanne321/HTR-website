@@ -47,88 +47,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// // Form Handling with FormSubmit
-// const bookingForm = document.getElementById('bookingForm');
-// if (bookingForm) {
-//     bookingForm.addEventListener('submit', function(e) {
-//         // Show loading state
-//         const submitBtn = this.querySelector('button[type="submit"]');
-//         if (submitBtn) {
-//             const originalText = submitBtn.textContent;
-//             submitBtn.textContent = 'Sending...';
-//             submitBtn.disabled = true;
-//         }
-        
-//         // Let FormSubmit handle the submission naturally
-//         // The form will redirect to FormSubmit's success page
-//     });
-// }
 
-// function showSuccessMessage() {
-//     const message = document.createElement('div');
-//     message.className = 'form-message success';
-//     message.style.cssText = `
-//         position: fixed;
-//         top: 50%;
-//         left: 50%;
-//         transform: translate(-50%, -50%);
-//         background: #10b981;
-//         color: white;
-//         padding: 20px 30px;
-//         border-radius: 8px;
-//         font-size: 16px;
-//         font-weight: 500;
-//         z-index: 10000;
-//         box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-//         text-align: center;
-//         max-width: 400px;
-//     `;
-//     message.innerHTML = `
-//         <h3 style="margin: 0 0 10px 0; font-size: 18px;">Booking Request Sent!</h3>
-//         <p style="margin: 0;">Thank you for your booking request. We will contact you shortly to confirm your appointment.</p>
-//     `;
-//     document.body.appendChild(message);
-    
-//     // Remove message after 5 seconds
-//     setTimeout(() => {
-//         if (message.parentNode) {
-//             message.parentNode.removeChild(message);
-//         }
-//     }, 5000);
-// }
-
-// function showErrorMessage() {
-//     const message = document.createElement('div');
-//     message.className = 'form-message error';
-//     message.style.cssText = `
-//         position: fixed;
-//         top: 50%;
-//         left: 50%;
-//         transform: translate(-50%, -50%);
-//         background: #ef4444;
-//         color: white;
-//         padding: 20px 30px;
-//         border-radius: 8px;
-//         font-size: 16px;
-//         font-weight: 500;
-//         z-index: 10000;
-//         box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-//         text-align: center;
-//         max-width: 400px;
-//     `;
-//     message.innerHTML = `
-//         <h3 style="margin: 0 0 10px 0; font-size: 18px;">Error Sending Request</h3>
-//         <p style="margin: 0;">Please try again or call us directly at 01952 240213.</p>
-//     `;
-//     document.body.appendChild(message);
-    
-//     // Remove message after 5 seconds
-//     setTimeout(() => {
-//         if (message.parentNode) {
-//             message.parentNode.removeChild(message);
-//         }
-//     }, 5000);
-// }
 
 // Add scroll effect to navbar
 window.addEventListener('scroll', function() {
@@ -312,9 +231,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         submitBtn.textContent = originalBtnText;
                     }
                 }, 10000); // 10 seconds timeout
-                
-                // Let the form submit naturally - don't prevent default
-                // FormSubmit will handle the redirect
             }
         });
     }
