@@ -408,106 +408,29 @@
         </div>
     </section>
 
-    <section class="booking">
-        <div class="booking-overlay"></div>
-        <div class="container">
-          <h2 class="section-title">Book Your Service</h2>
-      
-          <form action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST" class="booking-form">
-            <!-- FormSubmit config -->
-            <input type="hidden" name="_subject" value="New Booking Request - HTR Autocentre">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-      
-            <!-- Honeypot (spam trap) -->
-            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;">
-      
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-      
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  inputmode="tel"
-                  pattern="^[0-9+()\-.\s]{7,}$"
-                  placeholder="e.g., 07912 345678"
-                  required
-                >
-              </div>
-            </div>
-      
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-      
-              <div class="form-group">
-                <label for="registration">Vehicle Registration</label>
-                <input
-                  type="text"
-                  id="registration"
-                  name="registration"
-                  placeholder="e.g., AB12 CDE"
-                  pattern="^[A-Za-z0-9\s\-]{5,10}$"
-                  oninput="this.value=this.value.toUpperCase()"
-                  required
-                >
-              </div>
-            </div>
-      
-            <div class="form-row">
-              <div class="form-group">
-                <label for="service">Service Required</label>
-                <select id="service" name="service" required>
-                  <option value="">Select a service</option>
-                  <option value="mot">MOT Test</option>
-                  <option value="mot_interim">MOT &amp; Interim Service</option>
-                  <option value="mot_full">MOT &amp; Full Service</option>
-                  <option value="interim_service">Interim Service</option>
-                  <option value="full_service">Full Service</option>
-                  <option value="clutch">Clutch Service</option>
-                  <option value="suspension">Suspension Service</option>
-                  <option value="brakes">Brake Service</option>
-                  <option value="tyres">Tyre Service</option>
-                  <option value="diagnostics">Engine Diagnostics</option>
-                  <option value="battery">Battery Replacement</option>
-                  <option value="aircon">Air Con Service</option>
-                  <option value="general">General Repair</option>
-                  <option value="other">Other (specify in message)</option>
-                </select>
-              </div>
-      
-              <div class="form-group">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" name="date" min="" required>
-              </div>
-            </div>
-      
-            <div class="form-group">
-              <label for="message">Additional Information</label>
-              <textarea id="message" name="message" rows="4" placeholder="Please describe any issues or additional services required"></textarea>
-            </div>
-      
-            <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-        </div>
-      </section>
-      
-      <script>
-        // Optional: prevent choosing a past date (no other JS needed)
-        (function(){
-          var d=new Date(),m=(d.getMonth()+1).toString().padStart(2,'0'),day=d.getDate().toString().padStart(2,'0');
-          document.getElementById('date').setAttribute('min', d.getFullYear()+'-'+m+'-'+day);
-        })();
-      </script>      
+    <form action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST">
+        <input type="text" name="name" required placeholder="Your Name">
+        <input type="email" name="email" required placeholder="Your Email">
+        <input type="tel" name="phone" required placeholder="Your Phone Number">
+        <input type="text" name="registration" required placeholder="Your Vehicle Registration">
+        <select name="service" required placeholder="Your Service">
+            <option value="">Select a service</option>
+            <option value="mot">MOT Test</option>
+            <option value="mot & interim">MOT & Interim Service</option>
+            <option value="mot & full">MOT & Full Service</option>
+        </select>
+        <input type="date" name="date" required placeholder="Your Preferred Date">
+        <textarea name="message" required placeholder="Your Message"></textarea>
+
+        
+        <!-- Customisation -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+        <input type="text" name="_honey" style="display:none">
+        
+        <button type="submit">Send</button>
+      </form>
+       
       
 
     <!-- Booking Section -->
