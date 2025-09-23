@@ -195,8 +195,30 @@
                     <p>Quick and easy online booking</p>
                     <a href="#booking" class="btn btn-primary">Book Now</a>
                     <div class="mot-reminder">
-                        <i class="fas fa-info-circle"></i>
-                        <p>MOT due? We'll send you a reminder!</p>
+                        <div class="reminder-content">
+                            <h4><i class="fas fa-bell"></i> MOT Reminder Service</h4>
+                            <p>Get a free reminder when your MOT is due</p>
+                            <form class="reminder-form" action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST">
+                                <input type="hidden" name="_subject" value="MOT Reminder Signup - HTR Autocentre">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_next" value="https://hadleytestandrepair.netlify.app/mot-reminder-thank-you.html">
+                                <div class="form-row">
+                                    <input type="text" name="name" placeholder="Your name" required>
+                                    <input type="email" name="email" placeholder="Your email" required>
+                                </div>
+                                <div class="form-row">
+                                    <input type="tel" name="phone" placeholder="Phone number" required>
+                                    <input type="text" name="registration" placeholder="Vehicle reg" required>
+                                </div>
+                                <button type="submit" class="btn btn-secondary btn-small">Sign Up</button>
+                            </form>
+                            <div class="mot-check-link">
+                                <a href="https://www.gov.uk/check-mot-history" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Check your MOT due date on GOV.UK
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,20 +278,20 @@
                 
                 <div class="servicing-row">
                     <div class="engine-size">Up to 1500 CC</div>
-                    <div class="price-cell">£104.95</div>
-                    <div class="price-cell">£159.95</div>
+                    <div class="price-cell" data-label="Interim Service">£104.95</div>
+                    <div class="price-cell" data-label="Full Service">£159.95</div>
                 </div>
                 
                 <div class="servicing-row">
                     <div class="engine-size">Up to 2000 CC</div>
-                    <div class="price-cell">£114.95</div>
-                    <div class="price-cell">£169.95</div>
+                    <div class="price-cell" data-label="Interim Service">£114.95</div>
+                    <div class="price-cell" data-label="Full Service">£169.95</div>
                 </div>
                 
                 <div class="servicing-row">
                     <div class="engine-size">Up to 2500 CC</div>
-                    <div class="price-cell">£124.95</div>
-                    <div class="price-cell">£179.95</div>
+                    <div class="price-cell" data-label="Interim Service">£124.95</div>
+                    <div class="price-cell" data-label="Full Service">£179.95</div>
                 </div>
                 
                 <div class="servicing-row">

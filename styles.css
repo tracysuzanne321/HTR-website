@@ -296,7 +296,7 @@ body {
     margin: 3rem auto;
     background: var(--light-color);
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
@@ -351,7 +351,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
-    z-index: 100;
+    z-index: 999;
     text-align: left;
 }
 
@@ -494,20 +494,25 @@ body {
 }
 
 .servicing-note {
-    margin-top: 2rem;
+    margin: 2rem auto 0;
     padding: 1.5rem;
-    background: #fef3c7;
+    background: white;
     border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    max-width: 900px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .servicing-note p {
     margin: 0.5rem 0;
     color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .servicing-note i {
-    color: var(--accent-color);
+    color: var(--primary-color);
     margin-right: 0.5rem;
 }
 
@@ -583,12 +588,107 @@ body {
 
 .mot-reminder {
     margin-top: 2rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background: rgba(255,255,255,0.1);
     border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.reminder-content {
+    flex: 1;
+}
+
+.reminder-content h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.125rem;
+    color: white;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.reminder-content h4 i {
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+.reminder-content p {
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+}
+
+.reminder-form {
+    margin-top: 1rem;
+}
+
+.reminder-form .form-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.reminder-form input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 0.875rem;
+    backdrop-filter: blur(10px);
+}
+
+.reminder-form input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.reminder-form input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background: rgba(255,255,255,0.2);
+}
+
+.reminder-form button {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.mot-check-link {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.mot-check-link a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.mot-check-link a:hover {
+    color: white;
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-1px);
+}
+
+.mot-check-link i {
+    font-size: 0.75rem;
+    color: var(--accent-color);
 }
 
 /* About Section - Custom Design */
@@ -1219,6 +1319,18 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* Footer */
@@ -1469,6 +1581,94 @@ input[type="date"]::-webkit-datetime-edit-year-field {
 .contact-info strong {
     color: var(--primary-color);
     font-weight: 600;
+}
+
+/* MOT Reminder Thank You Page Styles */
+.mot-reminder-thank-you-hero {
+    position: relative;
+    background-image: url('Images/Outside garage.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    padding: 120px 0 80px;
+    margin-top: 60px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.mot-reminder-thank-you-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mot-reminder-thank-you-content .success-icon i {
+    font-size: 5rem;
+    color: var(--accent-color);
+    background: white;
+    border-radius: 50%;
+    padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.reminder-benefits {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    backdrop-filter: blur(10px);
+}
+
+.reminder-benefits h3 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.benefit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.benefit-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.benefit-content h4 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.benefit-content p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.4;
 }
 
 /* Thank You Page Styles */
@@ -1843,34 +2043,71 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     }
     
     .servicing-row {
-        grid-template-columns: 1fr;
+        display: block;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 1rem;
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     
     .engine-size {
-        background: var(--light-color);
+        background: var(--primary-color);
+        color: white;
         border-right: none;
         text-align: center;
+        padding: 0.75rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        font-weight: 600;
     }
     
     .price-cell {
         border-right: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .price-cell:last-child {
+        border-bottom: none;
+    }
+    
+    .price-cell::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-color);
     }
     
     .price-cell.special {
         grid-column: span 1;
+        justify-content: center;
+        font-style: italic;
+        color: var(--accent-color);
+    }
+    
+    .price-cell.special::before {
+        display: none;
     }
     
     .tooltip-content {
-        left: 0;
-        transform: translateX(0);
-        margin-left: -20px;
-        margin-right: -20px;
-        min-width: calc(100vw - 40px);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100vw - 40px);
+        max-width: 350px;
+        margin: 0;
+        z-index: 10000;
+        max-height: 80vh;
+        overflow-y: auto;
     }
     
     .tooltip-content::before {
-        left: 20px;
-        transform: none;
+        display: none;
     }
     
     .additional-grid {
@@ -1940,5 +2177,25 @@ input[type="date"]::-webkit-datetime-edit-year-field {
     .legal-text ul,
     .legal-text ol {
         margin-left: 1rem;
+    }
+    
+    /* MOT reminder form mobile styles */
+    .reminder-form .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .reminder-form input {
+        width: 100%;
+    }
+    
+    /* MOT reminder thank you mobile styles */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .reminder-benefits {
+        padding: 2rem;
     }
 }
