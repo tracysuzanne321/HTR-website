@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTR Autocentre - MOT Service & Repairs | Fixed Price Servicing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="Images/Logo.svg" alt="HTR Autocentre Logo" class="logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#servicing">Servicing Prices</a></li>
+                <li><a href="#mot">MOT</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional MOT Testing & Vehicle Repairs</h1>
+                <p>Your Local Trusted Completely Independent Garage in Telford.</p>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn btn-primary">Book MOT Test</a>
+                    <a href="#contact" class="btn btn-secondary">Get Quote</a>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>MOT Certified</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Same Day Service</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>12 Month Warranty</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What We Do</h2>
+            <p class="section-subtitle">Complete vehicle care under one roof</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="Images/mot logo.svg" alt="MOT Testing">
+                    </div>
+                    <h3>MOT Testing</h3>
+                    <p>Comprehensive vehicle safety and emissions testing</p>
+                    <span class="price">£54.85</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Servicing</h3>
+                    <p>Regular maintenance to keep your vehicle running smoothly</p>
+                    <span class="price">From £104.95</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                       <img src="Images/exhaust.svg" alt="Exhausts">
+                    </div>
+                    <h3>Exhausts</h3>
+                    <p>Exhaust system repair and replacement services</p>
+                    <span class="price">Quote on inspection</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <h3>Air Con</h3>
+                    <p>Air conditioning service, repair and recharge</p>
+                    <span class="price">From £55</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Cambelts</h3>
+                    <p>Timing belt replacement and maintenance</p>
+                    <span class="price">Quote on inspection</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                       <img src="Images/clutch.svg" alt="Clutches">
+                    </div>
+                    <h3>Clutches</h3>
+                    <p>Clutch repair and replacement services</p>
+                    <span class="price">Quote on inspection</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Gearboxes</h3>
+                    <p>Manual and automatic gearbox repairs</p>
+                    <span class="price">Quote on inspection</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="Images/suspension.svg" alt="Suspension">
+                    </div>
+                    <h3>Suspension</h3>
+                    <p>Shock absorbers, springs and suspension repairs</p>
+                    <span class="price">Quote on inspection</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="Images/brakes.svg" alt="Brakes">
+                    </div>
+                    <h3>Brakes</h3>
+                    <p>Brake pads, discs and complete brake system service</p>
+                    <span class="price">From £75</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="Images/battery.svg" alt="Batteries">
+                    </div>
+                    <h3>Batteries</h3>
+                    <p>Battery testing, replacement and charging services</p>
+                    <span class="price">From £85</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="Images/diagnostics.svg" alt="Diagnostics">
+                    </div>
+                    <h3>Diagnostics</h3>
+                    <p>Advanced computer diagnostics and fault finding</p>
+                    <span class="price">From £40</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                      <img src="Images/tyres.svg" alt="Tyres">
+                    </div>
+                    <h3>Tyres</h3>
+                    <p>Tyre fitting, balancing and puncture repairs</p>
+                    <span class="price">Quote on inspection</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOT Section -->
+    <section id="mot" class="mot-section">
+        <div class="container">
+            <div class="mot-content">
+                <div class="mot-info">
+                    <h2>MOT Testing Service</h2>
+                    <p>We are an authorized MOT testing center providing comprehensive vehicle safety checks</p>
+                    <ul class="mot-checklist">
+                        <li><i class="fas fa-check"></i> Lights & Signalling</li>
+                        <li><i class="fas fa-check"></i> Steering & Suspension</li>
+                        <li><i class="fas fa-check"></i> Brakes & Tyres</li>
+                        <li><i class="fas fa-check"></i> Emissions & Exhaust</li>
+                        <li><i class="fas fa-check"></i> Windscreen & Wipers</li>
+                        <li><i class="fas fa-check"></i> Seatbelts & Airbags</li>
+                    </ul>
+                    <div class="mot-price">
+                        <h3>MOT Test</h3>
+                        <span class="price-tag">£54.85</span>
+                        <p>Maximum DVSA price</p>
+                    </div>
+                </div>
+                <div class="mot-booking">
+                    <h3>Book Your MOT Test</h3>
+                    <p>Quick and easy online booking</p>
+                    <a href="#booking" class="btn btn-primary">Book Now</a>
+                    <div class="mot-reminder">
+                        <i class="fas fa-info-circle"></i>
+                        <p>MOT due? We'll send you a reminder!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicing Prices Section -->
+    <section id="servicing" class="servicing-section">
+        <div class="container">
+            <h2 class="section-title">Fixed Price Servicing</h2>
+            <p class="section-subtitle">Transparent pricing with no hidden charges - Call us on <strong>01952 240213</strong></p>
+            
+            <div class="servicing-grid">
+                <div class="servicing-header">
+                    <div class="header-cell">Engine Size</div>
+                    <div class="header-cell">
+                        Interim Service
+                        <div class="info-tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <div class="tooltip-content">
+                                <h4>Interim Service Includes:</h4>
+                                <ul>
+                                    <li>Change oil and filter</li>
+                                    <li>Check all fluid levels</li>
+                                    <li>Check light operation</li>
+                                    <li>Check timing belt interval</li>
+                                    <li>Basic safety check</li>
+                                    <li>Visual brake inspection</li>
+                                    <li>Road test</li>
+                                    <li>Reset service indicator</li>
+                                    <li>Service book stamped</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-cell">
+                        Full Service
+                        <div class="info-tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <div class="tooltip-content">
+                                <h4>Full Service Includes:</h4>
+                                <p><strong>Everything in Interim Service PLUS:</strong></p>
+                                <ul>
+                                    <li>Change air filter</li>
+                                    <li>Check and top up all fluid levels</li>
+                                    <li>Check battery condition</li>
+                                    <li>Check pollen filter</li>
+                                    <li>Check engine management system</li>
+                                    <li>Check auxiliary belt condition</li>
+                                    <li>Full safety check</li>
+                                    <li>Full brake inspection</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="servicing-row">
+                    <div class="engine-size">Up to 1500 CC</div>
+                    <div class="price-cell">£104.95</div>
+                    <div class="price-cell">£159.95</div>
+                </div>
+                
+                <div class="servicing-row">
+                    <div class="engine-size">Up to 2000 CC</div>
+                    <div class="price-cell">£114.95</div>
+                    <div class="price-cell">£169.95</div>
+                </div>
+                
+                <div class="servicing-row">
+                    <div class="engine-size">Up to 2500 CC</div>
+                    <div class="price-cell">£124.95</div>
+                    <div class="price-cell">£179.95</div>
+                </div>
+                
+                <div class="servicing-row">
+                    <div class="engine-size">Over 2500 CC</div>
+                    <div class="price-cell special" colspan="2">Price on Request</div>
+                </div>
+            </div>
+            
+            <div class="additional-services">
+                <h3>Additional Services</h3>
+                <div class="additional-grid">
+                    <div class="additional-item">
+                        <span class="service-name">Engine Flush</span>
+                        <span class="service-price">£19.99</span>
+                    </div>
+                    <div class="additional-item">
+                        <span class="service-name">Brake Fluid Change</span>
+                        <span class="service-price">£40.00</span>
+                    </div>
+                    <div class="additional-item">
+                        <span class="service-name">MOT Test</span>
+                        <span class="service-price">£40.00</span>
+                    </div>
+                    <div class="additional-item">
+                        <span class="service-name">Coolant Change</span>
+                        <span class="service-price">£40.00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="servicing-note">
+                <p><i class="fas fa-info-circle"></i> Prices represent service costs for a 4 cylinder petrol engine including 5 litres of engine oil.</p>
+                <p>Specialist oils, platinum or iridium spark plugs may incur an extra charge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image-section">
+                    <div class="garage-image">
+                        <img src="Images/Inside gargae.png" alt="HTR Autocentre Telford Garage">    
+                    </div>
+                    <div class="contact-badges">
+                        <div class="badge">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>01952 240213</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-certificate"></i>
+                            <span>ATA Certified</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri Service</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text-section">
+                    <div class="section-header">
+                        <h2>RELIABLE AND TRANSPARENT<br>
+                        MOT, SERVICING, AND REPAIRS<br>
+                        AT HTR AUTOCENTRE TELFORD</h2>
+                        <div class="header-underline"></div>
+                    </div>
+                    
+                    <div class="about-description">
+                        <p class="welcome-text"><strong>Welcome to HTR Autocentre Telford</strong>, with over 40 years of experience in the motor trade. We offer a comprehensive range of services, including MOT testing, servicing, repairs, and tyres, all provided by ATA-certified technicians.</p>
+                        
+                        <p>We pride ourselves on delivering high-quality work with a focus on personalized customer service, transparent pricing, and no hidden costs. As a reliable and trustworthy garage, we ensure your needs come first, offering clear quotes and only performing work with your authorisation.</p>
+                        
+                        <p class="trust-message">Trust HTR Autocentre Telford to take care of your vehicle while you stay focused on the road ahead.</p>
+                    </div>
+                    
+                    <div class="service-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-check-double"></i>
+                            <div>
+                                <h4>Family-Run Since 1984</h4>
+                                <p>40+ years of trusted service</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-tools"></i>
+                            <div>
+                                <h4>Full Service Range</h4>
+                                <p>MOT, servicing, repairs & tyres</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>ATA-Certified</h4>
+                                <p>Qualified expert technicians</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h4>Transparent Pricing</h4>
+                                <p>No hidden costs or surprises</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-cta-inline">
+                        <a href="#booking" class="btn btn-primary">
+                            <i class="fas fa-calendar-check"></i> Book Your Service
+                        </a>
+                        <a href="#servicing" class="btn btn-outline">
+                            <i class="fas fa-pound-sign"></i> View Our Prices
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trust-indicators">
+                <div class="indicator">
+                    <div class="indicator-number">40+</div>
+                    <div class="indicator-label">Years Experience</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-number">10k+</div>
+                    <div class="indicator-label">Happy Customers</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-number">100%</div>
+                    <div class="indicator-label">Transparent Pricing</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-number">5★</div>
+                    <div class="indicator-label">Customer Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="booking-overlay"></div>
+        <div class="container">
+            <h2 class="section-title">Book Your Service</h2>
+            <form class="booking-form" id="bookingForm" action="https://formsubmit.co/tracysmith32@live.co.uk" method="POST">
+                <input type="hidden" name="_subject" value="New Booking Request - HTR Autocentre">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registration">Vehicle Registration</label>
+                        <input type="text" id="registration" name="registration" placeholder="e.g., AB12 CDE" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="mot">MOT Test</option>
+                            <option value="mot & interim">MOT & Interim Service</option>
+                            <option value="mot & full">MOT & Full Service</option>
+                            <option value="interim">Interim Service</option>
+                            <option value="full">Full Service</option>
+                            <option value="clutch">Clutch Service</option>
+                            <option value="suspension">Suspension Service</option>
+                            <option value="brakes">Brake Service</option>
+                            <option value="tyres">Tyre Service</option>
+                            <option value="brakes">Brake Service</option>
+                            <option value="diagnostics">Engine Diagnostics</option>
+                            <option value="battery">Battery Replacement</option>
+                            <option value="aircon">Air Con Service</option>
+                            <option value="general">General Repair</option>
+                            <option value="other">Other (specify in message)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Please describe any issues or additional services required"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Booking Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>1 High Street<br>Hadley, Telford, TF10 7FT</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>01952 240213</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@htrautocentre.co.uk</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Opening Hours</h3>
+                            <p>Mon-Fri: 8:30 AM - 5:00 PM<br>
+                               Saturday: Closed<br>
+                               Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.3079327!2d-0.12775!3d51.50735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604c0!2sBig%20Ben!5e0!3m2!1sen!2suk!4v1234567890"
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HTR Autocentre</h3>
+                    <p>Your trusted partner for all vehicle maintenance and repairs</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#mot">MOT Testing</a></li>
+                        <li><a href="#booking">Book Online</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>MOT Testing</li>
+                        <li>Car Servicing</li>
+                        <li>Brake Repairs</li>
+                        <li>Engine Diagnostics</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Certifications</h4>
+                    <p>DVSA Approved MOT Testing Station</p>
+                    <p>Trading Standards Approved</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HTR Autocentre. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
