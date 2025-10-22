@@ -203,20 +203,22 @@ if (dateInput) {
     }
 }
 
-// Form submission with loading state
+// Form submission with loading state for Netlify Forms
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.booking-form');
+    const bookingForm = document.querySelector('.booking-form');
+    const reminderForm = document.querySelector('.reminder-form');
     
-    if (form) {
-        const submitBtn = form.querySelector('button[type="submit"]');
+    // Handle booking form
+    if (bookingForm) {
+        const submitBtn = bookingForm.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn ? submitBtn.textContent : 'Send';
 
-        form.addEventListener('submit', function (e) {
-            console.log('Form submit event triggered'); // Debug log
+        bookingForm.addEventListener('submit', function (e) {
+            console.log('Booking form submit event triggered');
             
             // Only proceed if form is valid
-            if (form.checkValidity()) {
-                console.log('Form is valid, proceeding with submission'); // Debug log
+            if (bookingForm.checkValidity()) {
+                console.log('Booking form is valid, proceeding with submission');
                 
                 // Show loading state
                 if (submitBtn) {
@@ -224,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     submitBtn.textContent = 'Sending...';
                 }
 
-                // Optional fallback: reset button after timeout in case formsubmit.co fails
+                // Reset button after timeout in case submission fails
                 setTimeout(() => {
                     if (submitBtn) {
                         submitBtn.disabled = false;
@@ -232,14 +234,44 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }, 10000); // 10 seconds timeout
                 
-                // Let the form submit naturally to FormSubmit
-                // Don't prevent default
+                // Let the form submit naturally to Netlify
             } else {
-                console.log('Form validation failed'); // Debug log
+                console.log('Booking form validation failed');
             }
         });
-    } else {
-        console.log('Form not found'); // Debug log
+    }
+    
+    // Handle MOT reminder form
+    if (reminderForm) {
+        const submitBtn = reminderForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.textContent : 'Sign Up';
+
+        reminderForm.addEventListener('submit', function (e) {
+            console.log('MOT reminder form submit event triggered');
+            
+            // Only proceed if form is valid
+            if (reminderForm.checkValidity()) {
+                console.log('MOT reminder form is valid, proceeding with submission');
+                
+                // Show loading state
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Signing Up...';
+                }
+
+                // Reset button after timeout in case submission fails
+                setTimeout(() => {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    }
+                }, 10000); // 10 seconds timeout
+                
+                // Let the form submit naturally to Netlify
+            } else {
+                console.log('MOT reminder form validation failed');
+            }
+        });
     }
 });
 
