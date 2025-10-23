@@ -1,0 +1,6 @@
+# Netlify form redirects
+/thank-you.html 200
+/mot-reminder-thank-you.html 200
+
+# Handle form submissions and redirect to appropriate thank you pages
+# This will be handled by Netlify Forms automatically when forms are submitted
