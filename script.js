@@ -300,9 +300,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 '2025-12-26'  // Boxing Day
             ];
             
+            // Christmas closure period: 23rd Dec 2025 midday to 5th Jan 2026
+            const christmasClosureStart = new Date('2025-12-23T12:00:00');
+            const christmasClosureEnd = new Date('2026-01-05T08:30:00');
+            
             // Check if today is a bank holiday
             const todayString = now.toISOString().split('T')[0];
             const isBankHoliday = bankHolidays2025.includes(todayString);
+            
+            // Check if we're in the Christmas closure period
+            const isChristmasClosure = now >= christmasClosureStart && now < christmasClosureEnd;
             
             // Opening hours: Mon-Fri 8:30 AM - 5:00 PM (8:30 = 510 minutes, 17:00 = 1020 minutes)
             const openTime = 8 * 60 + 30; // 8:30 AM
@@ -311,9 +318,30 @@ document.addEventListener('DOMContentLoaded', function () {
             let isOpen = false;
             let statusMessage = '';
             
-            // Check if it's a bank holiday first
-            if (isBankHoliday) {
+            // Check Christmas closure first
+            if (isChristmasClosure) {
+                if (now < christmasClosureEnd) {
+                    statusMessage = 'We are closed (Christmas break - reopen 5th Jan)';
+                }
+            }
+            // Check if it's a bank holiday
+            else if (isBankHoliday) {
                 statusMessage = 'We are closed (bank holiday)';
+            }
+            // Check if it's 23rd Dec before midday
+            else if (now.getDate() === 23 && now.getMonth() === 11 && now.getFullYear() === 2025) {
+                if (currentTime >= 12 * 60) { // After midday
+                    statusMessage = 'We are closed (Christmas break - reopen 5th Jan)';
+                } else if (day >= 1 && day <= 5) {
+                    if (currentTime >= openTime && currentTime < closeTime) {
+                        isOpen = true;
+                        statusMessage = 'We are open (closing at midday)';
+                    } else if (currentTime < openTime) {
+                        statusMessage = 'We open at 8:30 AM (closing at midday)';
+                    } else {
+                        statusMessage = 'We are closed';
+                    }
+                }
             }
             // Check if it's a weekday (Monday = 1 to Friday = 5)
             else if (day >= 1 && day <= 5) {
