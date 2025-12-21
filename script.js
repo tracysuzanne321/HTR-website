@@ -833,3 +833,110 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+
+// Snowfall Effect
+document.addEventListener('DOMContentLoaded', function() {
+    // Create snowfall container
+    const snowContainer = document.createElement('div');
+    snowContainer.id = 'snowfall-container';
+    snowContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        overflow: hidden;
+    `;
+    document.body.appendChild(snowContainer);
+    
+    // Snowflake characters
+    const snowflakes = ['❄', '❅', '❆', '✻', '✼', '✽', '✾', '✿'];
+    
+    // Add CSS animation
+    const snowStyle = document.createElement('style');
+    snowStyle.textContent = `
+        @keyframes snowfall {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes snowfall-reverse {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(-50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .snowflake-falling {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            animation-timing-function: linear;
+        }
+    `;
+    document.head.appendChild(snowStyle);
+    
+    // Create snowflakes
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake-falling';
+        snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+        
+        const leftPosition = Math.random() * 100;
+        const duration = Math.random() * 3 + 5;
+        const delay = Math.random() * 2;
+        const size = Math.random() * 15 + 10;
+        const opacity = Math.random() * 0.5 + 0.5;
+        const useReverse = Math.random() > 0.5;
+        
+        snowflake.style.cssText = `
+            position: absolute;
+            top: -20px;
+            left: ${leftPosition}%;
+            font-size: ${size}px;
+            color: rgba(255, 255, 255, ${opacity});
+            animation: ${useReverse ? 'snowfall-reverse' : 'snowfall'} ${duration}s linear ${delay}s forwards;
+            pointer-events: none;
+        `;
+        
+        snowContainer.appendChild(snowflake);
+        
+        // Remove snowflake after animation
+        setTimeout(() => {
+            if (snowflake.parentNode) {
+                snowflake.parentNode.removeChild(snowflake);
+            }
+        }, (duration + delay) * 1000);
+    }
+    
+    // Create snowflakes periodically
+    function startSnowfall() {
+        // Create initial batch
+        for (let i = 0; i < 30; i++) {
+            setTimeout(() => createSnowflake(), i * 200);
+        }
+        
+        // Continue creating snowflakes
+        setInterval(() => {
+            if (document.querySelectorAll('.snowflake-falling').length < 50) {
+                createSnowflake();
+            }
+        }, 500);
+    }
+    
+    // Start snowfall
+    startSnowfall();
+});
