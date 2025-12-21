@@ -834,6 +834,53 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 });
 
+// Christmas Popup
+document.addEventListener('DOMContentLoaded', function() {
+    const christmasPopup = document.getElementById('christmas-popup');
+    const closeButton = document.getElementById('christmas-popup-close');
+    const popupOverlay = document.querySelector('.christmas-popup-overlay');
+    
+    // Show popup function
+    function showChristmasPopup() {
+        if (christmasPopup) {
+            // Small delay for better UX
+            setTimeout(() => {
+                christmasPopup.classList.add('show');
+                // Prevent body scroll when popup is open
+                document.body.style.overflow = 'hidden';
+            }, 500);
+        }
+    }
+    
+    // Hide popup
+    function hideChristmasPopup() {
+        if (christmasPopup) {
+            christmasPopup.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // Show popup on every page load
+    showChristmasPopup();
+    
+    // Close button event
+    if (closeButton) {
+        closeButton.addEventListener('click', hideChristmasPopup);
+    }
+    
+    // Close when clicking overlay
+    if (popupOverlay) {
+        popupOverlay.addEventListener('click', hideChristmasPopup);
+    }
+    
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && christmasPopup && christmasPopup.classList.contains('show')) {
+            hideChristmasPopup();
+        }
+    });
+});
+
 // Snowfall Effect
 document.addEventListener('DOMContentLoaded', function() {
     // Create snowfall container
