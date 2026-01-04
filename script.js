@@ -300,16 +300,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 '2025-12-26'  // Boxing Day
             ];
             
-            // Christmas closure period: 23rd Dec 2025 midday to 5th Jan 2026
-            const christmasClosureStart = new Date('2025-12-23T12:00:00');
-            const christmasClosureEnd = new Date('2026-01-05T08:30:00');
-            
             // Check if today is a bank holiday
             const todayString = now.toISOString().split('T')[0];
             const isBankHoliday = bankHolidays2025.includes(todayString);
-            
-            // Check if we're in the Christmas closure period
-            const isChristmasClosure = now >= christmasClosureStart && now < christmasClosureEnd;
             
             // Opening hours: Mon-Fri 8:30 AM - 5:00 PM (8:30 = 510 minutes, 17:00 = 1020 minutes)
             const openTime = 8 * 60 + 30; // 8:30 AM
@@ -318,30 +311,9 @@ document.addEventListener('DOMContentLoaded', function () {
             let isOpen = false;
             let statusMessage = '';
             
-            // Check Christmas closure first
-            if (isChristmasClosure) {
-                if (now < christmasClosureEnd) {
-                    statusMessage = 'We are closed (Christmas break - reopen 5th Jan)';
-                }
-            }
             // Check if it's a bank holiday
-            else if (isBankHoliday) {
+            if (isBankHoliday) {
                 statusMessage = 'We are closed (bank holiday)';
-            }
-            // Check if it's 23rd Dec before midday
-            else if (now.getDate() === 23 && now.getMonth() === 11 && now.getFullYear() === 2025) {
-                if (currentTime >= 12 * 60) { // After midday
-                    statusMessage = 'We are closed (Christmas break - reopen 5th Jan)';
-                } else if (day >= 1 && day <= 5) {
-                    if (currentTime >= openTime && currentTime < closeTime) {
-                        isOpen = true;
-                        statusMessage = 'We are open (closing at midday)';
-                    } else if (currentTime < openTime) {
-                        statusMessage = 'We open at 8:30 AM (closing at midday)';
-                    } else {
-                        statusMessage = 'We are closed';
-                    }
-                }
             }
             // Check if it's a weekday (Monday = 1 to Friday = 5)
             else if (day >= 1 && day <= 5) {
@@ -862,156 +834,3 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
 });
 
-// Christmas Popup
-document.addEventListener('DOMContentLoaded', function() {
-    const christmasPopup = document.getElementById('christmas-popup');
-    const closeButton = document.getElementById('christmas-popup-close');
-    const popupOverlay = document.querySelector('.christmas-popup-overlay');
-    
-    // Show popup function
-    function showChristmasPopup() {
-        if (christmasPopup) {
-            // Small delay for better UX
-            setTimeout(() => {
-                christmasPopup.classList.add('show');
-                // Prevent body scroll when popup is open
-                document.body.style.overflow = 'hidden';
-            }, 500);
-        }
-    }
-    
-    // Hide popup
-    function hideChristmasPopup() {
-        if (christmasPopup) {
-            christmasPopup.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-    }
-    
-    // Show popup on every page load
-    showChristmasPopup();
-    
-    // Close button event
-    if (closeButton) {
-        closeButton.addEventListener('click', hideChristmasPopup);
-    }
-    
-    // Close when clicking overlay
-    if (popupOverlay) {
-        popupOverlay.addEventListener('click', hideChristmasPopup);
-    }
-    
-    // Close with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && christmasPopup && christmasPopup.classList.contains('show')) {
-            hideChristmasPopup();
-        }
-    });
-});
-
-// Snowfall Effect
-document.addEventListener('DOMContentLoaded', function() {
-    // Create snowfall container
-    const snowContainer = document.createElement('div');
-    snowContainer.id = 'snowfall-container';
-    snowContainer.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 9999;
-        overflow: hidden;
-    `;
-    document.body.appendChild(snowContainer);
-    
-    // Snowflake characters
-    const snowflakes = ['❄', '❅', '❆', '✻', '✼', '✽', '✾', '✿'];
-    
-    // Add CSS animation
-    const snowStyle = document.createElement('style');
-    snowStyle.textContent = `
-        @keyframes snowfall {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(50px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes snowfall-reverse {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(-50px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        .snowflake-falling {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            animation-timing-function: linear;
-        }
-    `;
-    document.head.appendChild(snowStyle);
-    
-    // Create snowflakes
-    function createSnowflake() {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake-falling';
-        snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
-        
-        const leftPosition = Math.random() * 100;
-        const duration = Math.random() * 3 + 5;
-        const delay = Math.random() * 2;
-        const size = Math.random() * 15 + 10;
-        const opacity = Math.random() * 0.5 + 0.5;
-        const useReverse = Math.random() > 0.5;
-        
-        snowflake.style.cssText = `
-            position: absolute;
-            top: -20px;
-            left: ${leftPosition}%;
-            font-size: ${size}px;
-            color: rgba(255, 255, 255, ${opacity});
-            animation: ${useReverse ? 'snowfall-reverse' : 'snowfall'} ${duration}s linear ${delay}s forwards;
-            pointer-events: none;
-        `;
-        
-        snowContainer.appendChild(snowflake);
-        
-        // Remove snowflake after animation
-        setTimeout(() => {
-            if (snowflake.parentNode) {
-                snowflake.parentNode.removeChild(snowflake);
-            }
-        }, (duration + delay) * 1000);
-    }
-    
-    // Create snowflakes periodically
-    function startSnowfall() {
-        // Create initial batch
-        for (let i = 0; i < 30; i++) {
-            setTimeout(() => createSnowflake(), i * 200);
-        }
-        
-        // Continue creating snowflakes
-        setInterval(() => {
-            if (document.querySelectorAll('.snowflake-falling').length < 50) {
-                createSnowflake();
-            }
-        }, 500);
-    }
-    
-    // Start snowfall
-    startSnowfall();
-});
